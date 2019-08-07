@@ -6,7 +6,7 @@ class TopicControllers extends Controller {
 
     public function index($request , $response)
     {
-        return $this->c->views->render($response , 'topics/index.twig');
+        return $this->views->render($response , 'topics/index.twig');
         echo "all topics";
     }
 

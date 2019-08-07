@@ -6,14 +6,21 @@ use Interop\Container\ContainerInterface;
 
 abstract class Controller
 {
-    protected $c;
+    protected $container;
 
-    public function __construct(ContainerInterface $c)
+    public function __construct(ContainerInterface $container)
     {
-        $this->c = $c;
+        $this->container = $container;
     }
 
     protected function render404($response){
-        return $this->c->view->render($response->withStatus(404) , 'errors/404.twig');
+        return $this->container->view->render($response->withStatus(404) , 'errors/404.twig');
+    }
+
+    public function __get($property)
+    {
+        if($this->container->{$property}){
+            return $this->container->{$property};
+        }
     }
 }

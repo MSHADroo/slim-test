@@ -1,5 +1,7 @@
 <?php
 
+use Respect\Validation\Validator as v;
+
 require __DIR__ . '/../vendor/autoload.php';
 
 $app = new Slim\App([
@@ -60,4 +62,9 @@ $container['phpErrorHandler'] = function ($c) {
             ->write('Something went wrong!');
     };
 };
+
+v::vith('App\\Validation\\Rules\\');
+
+
+
 require __DIR__ . '/../routes/web.php';
